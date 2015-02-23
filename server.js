@@ -5,8 +5,9 @@ var morgan 				 = require('morgan');
 var body-parser		 = require('body-parser');
 var methodOverride = require('method-override');
 var port 					 = process.env.PORT || 8080;
+var database 			 = require('./config/database');
 
-mongoose.connect('mongodb://localhost:27017/ramen-buffet-angular');
+mongoose.connect(database.url);
 
 app.use(express.static(__dirname + '/public'));
 app.use(morgan('dev'));
