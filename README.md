@@ -5,8 +5,8 @@
 - Twitter OAuth
 - Facebook Auth
 
-![Alt text](https://raw.githubusercontent.com/evturn/ramen-buffet-angular/master/public/img/ramen-2.png)
+![Alt text](https://raw.githubusercontent.com/evturn/ramen-buffet-angular/master/public/img/ramen-3.png)
 
 - Local Accounts
 
-![Alt text](https://raw.githubusercontent.com/evturn/ramen-buffet-angular/master/public/img/ramen-3.png)
+![Alt text](https://raw.githubusercontent.com/evturn/ramen-buffet-angular/master/public/img/ramen-2.png)
