@@ -68,10 +68,14 @@ button {
 
 #todoapp input::-webkit-input-placeholder {
 	font-style: italic;
+	font-size: 30px;
+	text-align: left;
 }
 
 #todoapp input::-moz-placeholder {
 	font-style: italic;
+	font-size: 30px;
+	text-align: left;
 	color: #a9a9a9;
 }
 
@@ -123,6 +127,7 @@ button {
 	z-index: 2;
 	box-shadow: none;
 	font-size: 35px;
+	text-align: left;
 }
 
 #main {

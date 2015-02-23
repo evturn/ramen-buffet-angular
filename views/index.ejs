@@ -38,7 +38,7 @@
 			<ul id="todo-list" class="row">
 				<li class="view" ng-repeat="todo in todos">
 					<input class="toggle" type="checkbox" {{ todo.done ? 'checked' : '' }}>
-					<label>&#149; {{ todo.text }}</label>
+					<label>{{ todo.text }}</label>
 					<button class="destroy" ng-click="deleteTodo(todo._id)"></button>
 				</li>
 			</ul>	
