@@ -13,6 +13,8 @@ var database 			 = require('./config/database.js');
 
 mongoose.connect(database.url);
 
+// require('./config/passport')(passport); // pass passport for configuration
+
 app.use(express.static(__dirname + '/public'));
 app.use(morgan('dev'));
 app.use(cookieParser());
@@ -22,12 +24,13 @@ app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 app.use(methodOverride());
 app.set('view engine', 'ejs');
 
-app.use(session({ secret: 'ilovescotchscotchyscotchscotch' }));
+app.use(session({ secret: 'buffetoframen' }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
 require('./app/routes.js')(app, passport);
+require('./app/userRoutes.js')(app, passport);
 
 app.listen(port);
 console.log("App listening on port " + port);
