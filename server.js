@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
+var port = process.env.PORT || 8080;
 
 mongoose.connect('mongodb://localhost:27017/ramen-buffet-angular');
 
@@ -68,5 +69,5 @@ app.get('*', function(req, res) {
 });
 
 
-app.listen(8080);
-console.log("App listening on port 8080");
+app.listen(port);
+console.log("App listening on port " + port);
