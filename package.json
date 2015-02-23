@@ -1,0 +1,23 @@
+{
+  "name": "ramen-buffet-angular",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "connect": "^3.3.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/evturn/ramen-buffet-angular.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/evturn/ramen-buffet-angular/issues"
+  },
+  "homepage": "https://github.com/evturn/ramen-buffet-angular"
+}
