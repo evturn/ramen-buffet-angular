@@ -5,7 +5,7 @@ var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 
-mongoose.connect('mongodb://node:node@mongo.onmodulus.net:27017/uwO3mypu');
+mongoose.connect('mongodb://localhost:27017/ramen-buffet-angular');
 
 app.use(express.static(__dirname + '/public'));
 app.use(morgan('dev'));
@@ -19,41 +19,49 @@ var Todo = mongoose.model('Todo', {
 });
 
 app.get('/api/todos', function(req, res) {
-	Todo.find(function(err, todos) {
-		if (err)
-			res.send(err)
-		res.json(todos);
-	});
-});
 
-app.post('/api/todos', function(req, res) {
-	Todo.create({
-  	text : req.body.text,
-  	done : false
-	}, function(err, todo) {
+  Todo.find(function(err, todos) {  
     if (err)
-        res.send(err);
-  	Todo.find(function(err, todos) {
-	    if (err)
-	        res.send(err)
-	        res.json(todos);
-    });
-	});
-});
+      res.send(err)
 
+    res.json(todos);
+  });
+});
+   
+app.post('/api/todos', function(req, res) {
+
+  Todo.create({
+    text : req.body.text,
+    done : false
+  }, function(err, todo) {
+      if (err)
+        res.send(err);
+
+		Todo.find(function(err, todos) {
+		    if (err)
+		        res.send(err)
+		    res.json(todos);
+		});
+  
+  });
+
+});
+ 
 app.delete('/api/todos/:todo_id', function(req, res) {
   Todo.remove({
     _id : req.params.todo_id
   }, function(err, todo) {
       if (err)
-          res.send(err);
-	  Todo.find(function(err, todos) {
-	    if (err)
-	        res.send(err)
-	        res.json(todos);
-	  });
+        res.send(err);
+
+      Todo.find(function(err, todos) {
+        if (err)
+          res.send(err)
+          res.json(todos);
+      });
   });
 });
+
 
 app.get('*', function(req, res) {
   res.sendfile('./public/index.html');

@@ -1,7 +1,8 @@
-<!DOCTYPE html>
+<!doctype html>
 <html ng-app="ramenTodo">
 <head>
-	<meta charset="UTF-8">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>RAMEN BUFFET</title>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
@@ -13,29 +14,28 @@
 	<div class="container">
 		
 		<div class="jumbotron text-center">
-			<h1>RAMEN BUFFET<span class="label label-info">{{ todos.length }}</span></h1>
+			<h1>RAMEN BUFFET <span class="label label-info">{{ todos.length }}</span></h1>
 		</div>
-
 		<div id="todo-list" class="row">
-      <div class="col-sm-4 col-sm-offset-4">
-      	<label>
-					<input type="checkbox" ng-click="deleteTodo(todo._id)"> {{ todo.text }}
-				</label>
+			<div class="col-sm-4 col-sm-offset-4">
+				<div class="checkbox" ng-repeat="todo in todos">
+					<label>
+						<input type="checkbox" ng-click="deleteTodo(todo._id)"> {{ todo.text }}
+					</label>
+				</div>
 			</div>
 		</div>
-	
 
-	<div id="todo-form" class="row">
-    <div class="col-sm-8 col-sm-offset-2 text-center">
-      <form>
-        <div class="form-group">
-					<input type="text" class="form-control input-lg text-center" placeholder="Sup with them cookies, dog?" ng-model="formData.text">
-				</div>
-				<button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Add</button>
-    	</form>
-    </div>
-	</div>
-
+		<div id="todo-form" class="row">
+			<div class="col-sm-8 col-sm-offset-2 text-center">
+				<form>
+					<div class="form-group">
+						<input type="text" class="form-control input-lg text-center" placeholder="Write whatever. I don't care." ng-model="formData.text">
+					</div>
+					<button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Add</button>
+				</form>
+			</div>
+		</div>
 
 	</div>
 </body>
