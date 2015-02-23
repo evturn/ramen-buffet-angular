@@ -6,7 +6,8 @@
   "dependencies": {
     "connect": "^3.3.4",
     "deployd": "^0.8.0",
-    "karma": "^0.12.31"
+    "karma": "^0.12.31",
+    "serve-static": "^1.9.1"
   },
   "devDependencies": {},
   "scripts": {
