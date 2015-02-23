@@ -27,7 +27,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
-// require('./app/apiRoutes.js')(app, passport);
+require('./app/apiRoutes.js')(app, passport);
 require('./app/routes.js')(app, passport);
 
 
