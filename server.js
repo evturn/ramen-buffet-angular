@@ -1,9 +1,6 @@
-var connect = require('connect');
-var http = require('http');
-var serveStatic = require('serve-static');
-
-
-var app = connect();
-
-app.use(serveStatic("../angularjs"));
-app.listen(5000);
+var express = require('express');
+var app = express();
+var mongoose = require('mongoose');
+var morgan = require('morgan');
+var bodyParser = require('body-parser');
+var methodOverride = require('method-override');
