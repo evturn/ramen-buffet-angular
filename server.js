@@ -29,8 +29,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
-require('./app/routes.js')(app, passport);
+require('./app/apiRoutes.js')(app, passport);
 require('./app/userRoutes.js')(app, passport);
+
 
 app.listen(port);
 console.log("App listening on port " + port);
