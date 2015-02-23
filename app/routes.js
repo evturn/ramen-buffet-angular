@@ -14,8 +14,6 @@ app.post('/login', passport.authenticate('local-login', {
   failureFlash : true
 }));
 
-
-
   app.get('/signup', function(req, res) {
     res.render('signup.ejs', { message: req.flash('signupMessage') });
   });

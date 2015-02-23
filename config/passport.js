@@ -69,9 +69,9 @@ module.exports = function(passport) {
     process.nextTick(function() {
       User.findOne({ 'twitter.id' : profile.id }, function(err, user) {
           if (err)
-              return done(err);
+            return done(err);
           if (user) {
-              return done(null, user);
+            return done(null, user);
           } else {    
           var newUser                 = new User();  
           newUser.twitter.id          = profile.id;
