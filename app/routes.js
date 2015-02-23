@@ -4,27 +4,6 @@ module.exports = function(app, passport) {
     res.render('index.ejs');
   });
 
-  app.get('/login', function(req, res) {
-    res.render('login.ejs', { message: req.flash('loginMessage') });
-  });
-
-app.post('/login', passport.authenticate('local-login', {
-  successRedirect : '/profile',
-  failureRedirect : '/login',
-  failureFlash : true
-}));
-
-  app.get('/signup', function(req, res) {
-    res.render('signup.ejs', { message: req.flash('signupMessage') });
-  });
-
-  app.post('/signup', passport.authenticate('local-signup', {
-    successRedirect : '/profile',
-    failureRedirect : '/signup',
-    failureFlash : true
-  }));
-
-
   app.get('/profile', isLoggedIn, function(req, res) {
     res.render('profile.ejs', {
         user : req.user
@@ -35,6 +14,26 @@ app.post('/login', passport.authenticate('local-login', {
     req.logout();
     res.redirect('/');
   });
+
+  app.get('/login', function(req, res) {
+    res.render('login.ejs', { message: req.flash('loginMessage') });
+  });
+
+  app.post('/login', passport.authenticate('local-login', {
+    successRedirect : '/profile',
+    failureRedirect : '/login',
+    failureFlash : true
+  }));
+
+  app.get('/signup', function(req, res) {
+    res.render('signup.ejs', { message: req.flash('signupMessage') });
+  });
+
+  app.post('/signup', passport.authenticate('local-signup', {
+    successRedirect : '/profile',
+    failureRedirect : '/signup',
+    failureFlash : true
+  }));
 
   app.get('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
 
@@ -51,7 +50,6 @@ app.post('/login', passport.authenticate('local-login', {
       successRedirect : '/profile',
       failureRedirect : '/'
     }));
-
   
   app.get('/connect/local', function(req, res) {
     res.render('connect-local.ejs', { message: req.flash('loginMessage') });
