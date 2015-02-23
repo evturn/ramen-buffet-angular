@@ -1,5 +1,7 @@
 html {
 	overflow-y: scroll;
+	margin: 0;
+	padding: 0;
 }
 
 body {
@@ -16,6 +18,29 @@ body {
 	-ms-font-smoothing: antialiased;
 	-o-font-smoothing: antialiased;
 	font-smoothing: antialiased;
+}
+
+
+#tooltip {
+	float: right;
+	width: 100px;
+	height: 100px;
+	background-color: red;
+}
+
+button {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background: none;
+	font-size: 100%;
+	vertical-align: baseline;
+	font-family: inherit;
+	color: inherit;
+	-webkit-appearance: none;
+	-ms-appearance: none;
+	-o-appearance: none;
+	appearance: none;
 }
 
 #todoapp {
@@ -91,11 +116,13 @@ body {
 }
 
 #new-todo {
+	height: 70px;
 	padding: 16px 16px 16px 60px;
 	border: none;
 	background: rgba(0, 0, 0, 0.02);
 	z-index: 2;
 	box-shadow: none;
+	font-size: 35px;
 }
 
 #main {
@@ -154,8 +181,8 @@ body {
 }
 
 #todo-list li label {
-	white-space: pre;
-	word-break: break-word;
+	white-space: pre-line;
+	word-break: normal;
 	padding: 15px 60px 15px 15px;
 	margin-left: 45px;
 	display: block;
@@ -231,11 +258,27 @@ body {
 	text-align: right;
 }
 
-hr {
-	margin: 20px 0;
-	border: 0;
-	border-top: 1px dashed #C5C5C5;
-	border-bottom: 1px dashed #F7F7F7;
+#filters {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	position: absolute;
+	right: 0;
+	left: 0;
+}
+
+#filters li {
+	display: inline;
+}
+
+#filters li a {
+	color: #83756f;
+	margin: 2px;
+	text-decoration: none;
+}
+
+#filters li a.selected {
+	font-weight: bold;
 }
 
 #info {
@@ -248,26 +291,6 @@ hr {
 
 #info a {
 	color: inherit;
-}
-
-button,
-input[type="checkbox"] {
-  outline: none;
-}
-
-button {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	background: none;
-	font-size: 100%;
-	vertical-align: baseline;
-	font-family: inherit;
-	color: inherit;
-	-webkit-appearance: none;
-	-ms-appearance: none;
-	-o-appearance: none;
-	appearance: none;
 }
 
 #submit-btn {

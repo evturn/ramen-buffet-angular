@@ -25,14 +25,12 @@
 		      <a href="/signup" class="btn btn-default"><span class="fa fa-user"></span> Signup</a>
 	    	</div>
 			</header>
-			<div class="jumbotron text-center">
-				<h1>RAMEN BUFFET <span class="label label-info" id="todo-count">{{ todos.length }}</span></h1>
-				<div id="todo-form">
-					<form>
-						<input type="text" class="form-control input-lg text-center" id="new-todo" placeholder="Write whatever. I don't care." ng-model="formData.text" autofocus>
-						<button type="submit" class="btn btn-primary btn-lg" id="submit-btn" ng-click="createTodo()">Add</button>
-					</form>
-				</div>
+			<h1>RAMEN BUFFET <span class="label label-info" id="todo-count">{{ todos.length }}</span></h1>
+			<div id="todo-form">
+				<form>
+					<input type="text" class="form-control text-center" id="new-todo" placeholder="Write whatever. I don't care." ng-model="formData.text" autofocus>
+					<button type="submit" class="btn btn-primary btn-lg" id="submit-btn" ng-click="createTodo()">Add</button>
+				</form>
 			</div>
 		<section id="main">
 			<ul id="todo-list" class="row">
@@ -43,7 +41,19 @@
 				</li>
 			</ul>	
 		</section>
-		<footer id="footer"></footer>
+		<footer id="footer">
+			<ul id="filters">
+      <li>
+        <a class="selected" href="#/">All</a>
+      </li>
+      <li>
+        <a href="#/active">Active</a>
+      </li>
+      <li>
+        <a href="#/completed">Completed</a>
+      </li>
+    </ul>
+		</footer>
 		</section>
 		<div id="info">
     	<p>Built by <a href="https://github.com/evturn">Evan Turner</a></p>
