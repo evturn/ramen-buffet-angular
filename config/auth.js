@@ -6,8 +6,8 @@ module.exports = {
     'callbackURL'       : 'http://localhost:8080/auth/twitter/callback'
   },
     'facebookAuth' : {
-    'clientID'      : FACEBOOK_ID,
-    'clientSecret'  : FACEBOOK_SECRET,
+    'clientID'      : process.env.FACEBOOK_ID,
+    'clientSecret'  : process.env.FACEBOOK_SECRET,
     'callbackURL'   : 'http://localhost:8080/auth/facebook/callback'
   }
 
