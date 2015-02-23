@@ -16,7 +16,7 @@
 <body ng-controller="mainController">
 	<div class="container">
 			
-		<div class="jumbotron text-center">	
+		<div class="text-center">	
       <h2><span class="fa fa-lock"></span>Login.</h2>
       <p>Login or Register with:</p>
       <a href="/auth/twitter" class="btn btn-info"><span class="fa fa-twitter"></span> Twitter</a>
@@ -28,16 +28,6 @@
 		<div class="jumbotron text-center">
 			<h1>RAMEN BUFFET <span class="label label-info">{{ todos.length }}</span></h1>
 		</div>
-		<div id="todo-list" class="row">
-			<div class="col-sm-4 col-sm-offset-4">
-				<div class="checkbox" ng-repeat="todo in todos">
-					<label>
-						<input class="toggle" type="checkbox"> {{ todo.text }}
-					</label>
-					<button class="destroy" ng-click="deleteTodo(todo._id)"></button>
-				</div>
-			</div>
-		</div>
 
 		<div id="todo-form" class="row">
 			<div class="col-sm-8 col-sm-offset-2 text-center">
@@ -47,6 +37,17 @@
 					</div>
 					<button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Add</button>
 				</form>
+			</div>
+		</div>
+
+		<div id="todo-list" class="row">
+			<div class="col-sm-4 col-sm-offset-4">
+				<div class="checkbox" ng-repeat="todo in todos">
+					<label>
+						<h3>&#149; {{ todo.text }}</h3>
+					</label>
+					<button class="destroy" ng-click="deleteTodo(todo._id)"></button>
+				</div>
 			</div>
 		</div>
 
