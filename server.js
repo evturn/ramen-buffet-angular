@@ -1,10 +1,10 @@
 var express 			 = require('express');
-var port 					 = process.env.PORT || 3000;
+var port 					 = process.env.PORT || 8080;
 var mongoose 			 = require('mongoose');
 var http 					 = require('http');
 var path 					 = require('path');
 var passport 			 = require('passport');
-var LocalStrategy  = require('passport-local').Strategy;
+var TwitterStrategy = require('passport-twitter').Strategy;
 var morgan 				 = require('morgan');
 var cookieParser 	 = require('cookie-parser');
 var bodyParser		 = require('body-parser');
@@ -13,57 +13,63 @@ var database 			 = require('./config/database.js');
 
 mongoose.connect(database.url);
 
-passport.use(new LocalStrategy(
-  function(username, password, done) {
-    if (username === "admin" && password === "admin") {
-      return done(null, {name: "admin"});
-    }
-    return done(null, false, { message: 'Incorrect username.' });
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(obj, done) {
+  done(null, obj);
+});
+
+passport.use(new TwitterStrategy({
+    consumerKey: process.env.TWITTER_KEY,
+    consumerSecret: process.env.TWITTER_SECRET,
+    callbackURL: "http://127.0.0.1:3000/auth/twitter/callback"
+  },
+  function(token, tokenSecret, profile, done) {
+    User.findOrCreate({ twitterId: profile.id }, function (err, user) {
+      return done(err, user);
+    });
   }
 ));
 
 var app = express();
 
 app.use(express.static(__dirname + '/public'));
-app.set('view engine', 'ejs');
-app.use(express.favicon());
 app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({'extended':'true'}));
 app.use(bodyParser.json());
 app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 app.use(methodOverride());
-app.use(express.session({ secret: 'securedsession' }));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(app.router);
-
-if ('development' == app.get('env')) {
-  app.use(express.errorHandler());
-}
 
 require('./app/routes.js')(app);
 
-app.get('/', function(req, res){
-  res.render('index', { title: 'Express' });
+
+app.get('/auth/twitter',
+  passport.authenticate('twitter'),
+  function(req, res){
 });
 
-app.get('/users', auth, function(req, res){
-  res.send([{name: "user1"}, {name: "user2"}]);
+app.get('/auth/twitter/callback', 
+  passport.authenticate('twitter', { failureRedirect: '/login' }),
+  function(req, res) {
+    res.redirect('/');
 });
 
-app.get('/loggedin', function(req, res) {
-  res.send(req.isAuthenticated() ? req.user : '0');
+app.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
 });
 
-app.post('/login', passport.authenticate('local'), function(req, res) {
-  res.send(req.user);
-});
 
-app.post('/logout', function(req, res){
-  req.logOut();
-  res.send(200);
-});
 
 app.listen(port);
 console.log("App listening on port " + port);
+
+function ensureAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) { return next(); }
+  res.redirect('/login')
+}
