@@ -14,7 +14,7 @@
 	<script type="text/javascript" src="../js/core.js"></script>
 </head>
 <body ng-controller="mainController">
-	<div class="container">
+	
 		<section id="todoapp">
 			<div class="text-center">	
       	<h2><span class="fa fa-lock"></span>Login.</h2>
@@ -24,31 +24,23 @@
 				<a href="/login" class="btn btn-default"><span class="fa fa-user"></span> Login</a>
 	      <a href="/signup" class="btn btn-default"><span class="fa fa-user"></span> Signup</a>
     	</div>
-			<div class="jumbotron text-center">
 				<header id="header">
-				<h1>RAMEN BUFFET <span class="label label-info">{{ todos.length }}</span></h1>
+			<div class="jumbotron text-center">
+				<h1>RAMEN BUFFET <span class="label label-info" id="todo-count">{{ todos.length }}</span></h1>
 				<div id="todo-form">
 					<form>
-						<input type="text" class="form-control input-lg text-center" id="new-todo" placeholder="Write whatever. I don't care." ng-model="formData.text">
-						<button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Add</button>
+						<input type="text" class="form-control input-lg text-center" id="new-todo" placeholder="Write whatever. I don't care." ng-model="formData.text" autofocus>
+						<button type="submit" class="btn btn-primary btn-lg" id="submit-btn" ng-click="createTodo()">Add</button>
 					</form>
 				</div>
 			</header>
 			</div>
 		</section>
-
-		<div id="todo-form">
-			<div class="col-sm-8 col-sm-offset-2 text-center">
-				<form>
-	
-				</form>
-			</div>
-		</div>
 		<section id="main">
 			<ul id="todo-list" class="row">
-				<li class="checkbox" ng-repeat="todo in todos">
-					<input class="toggle" type="checkbox" {{ done ? 'checked' : '' }}>
-					<label><h3>&#149; {{ todo.text }}</h3></label>
+				<li class="view" ng-repeat="todo in todos">
+					<input class="toggle" type="checkbox" {{ todo.done ? 'checked' : '' }}>
+					<label>&#149; {{ todo.text }}</label>
 					<button class="destroy" ng-click="deleteTodo(todo._id)"></button>
 				</li>
 			</ul>	
@@ -57,6 +49,6 @@
     	<p>Built by <a href="https://github.com/evturn">Evan Turner</a></p>
     	<p><a href="http://evturn.com">evturn.com</a></p>
   	</div>
-	</div>
+	
 </body>
 </html>
