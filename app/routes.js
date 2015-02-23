@@ -38,6 +38,14 @@ app.post('/login', passport.authenticate('local-login', {
     res.redirect('/');
   });
 
+  app.get('/auth/twitter', passport.authenticate('twitter'));
+
+  app.get('/auth/twitter/callback',
+    passport.authenticate('twitter', {
+      successRedirect : '/profile',
+      failureRedirect : '/'
+    }));
+
 };
 
 function isLoggedIn(req, res, next) {   
