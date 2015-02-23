@@ -1,3 +1,3 @@
 module.exports = {
-	url : 'mongodb://localhost:27017/ramen-buffet-angular'
+	'url' : 'mongodb://localhost:27017/ramen-buffet-angular'
 };
