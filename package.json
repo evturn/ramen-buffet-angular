@@ -4,7 +4,9 @@
   "description": "",
   "main": "server.js",
   "dependencies": {
-    "connect": "^3.3.4"
+    "connect": "^3.3.4",
+    "deployd": "^0.8.0",
+    "karma": "^0.12.31"
   },
   "devDependencies": {},
   "scripts": {
