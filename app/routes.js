@@ -1,5 +1,4 @@
 var Todo = require('./models/todos');
-var passport = require('passport');
 
 module.exports = function(app) {
 
