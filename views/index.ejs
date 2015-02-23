@@ -33,6 +33,8 @@
 				</form>
 			</div>
 		<section id="main">
+			<input id="toggle-all" type="checkbox">
+      <label for="toggle-all">MARK COMPLETE</label>
 			<ul id="todo-list" class="row">
 				<li class="view" ng-repeat="todo in todos">
 					<input class="toggle" type="checkbox" {{ todo.done ? 'checked' : '' }}>
@@ -50,7 +52,7 @@
         <a href="#/active">Active</a>
       </li>
       <li>
-        <a href="#/completed">Completed</a>
+        <a href="#/done">Done</a>
       </li>
     </ul>
 		</footer>
