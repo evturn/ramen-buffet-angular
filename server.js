@@ -1,10 +1,10 @@
-var express = require('express');
-var app = express();
-var mongoose = require('mongoose');
-var morgan = require('morgan');
-var bodyParser = require('body-parser');
+var express 			 = require('express');
+var app 					 = express();
+var mongoose 			 = require('mongoose');
+var morgan 				 = require('morgan');
+var body-parser		 = require('body-parser');
 var methodOverride = require('method-override');
-var port = process.env.PORT || 8080;
+var port 					 = process.env.PORT || 8080;
 
 mongoose.connect('mongodb://localhost:27017/ramen-buffet-angular');
 
@@ -16,7 +16,8 @@ app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 app.use(methodOverride());
 
 var Todo = mongoose.model('Todo', {
-	text: String
+	text : String,
+	done : Boolean
 });
 
 app.get('/api/todos', function(req, res) {
