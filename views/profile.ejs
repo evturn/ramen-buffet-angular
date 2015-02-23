@@ -14,15 +14,13 @@
   <script type="text/javascript" src="../js/core.js"></script>
 </head>
 <body>
-  <div class="container">
-    
-    <div class="page-header text-center">
-      <h1><span class="fa fa-anchor"></span> Profile Page</h1>
+    <section class="text-center" id="todoapp">
+      <h1><span class="fa fa-anchor"></span> PROFILE</h1>
       <a href="/logout" class="btn btn-default btn-sm">Logout</a>
-    </div>
-
+  <div class="container">
+    <section id="main">
     <div class="row">
-      <div class="col-sm-6">
+      <div class="col-xs-12 col-sm-3">
         <div class="well">
           <h3><span class="fa fa-user"></span> Local</h3>
           <% if (user.local.email) { %>
@@ -37,9 +35,7 @@
           <% } %>
          </div>
       </div>
-    </div>
-     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-xs-6 col-sm-3">
           <div class="well">
             <h3 class="text-info"><span class="fa fa-twitter"></span> Twitter</h3>
             <% if (user.twitter.token) { %>
@@ -55,9 +51,8 @@
             <% } %>
           </div>
         </div>
-      </div>
 
-      <div class="col-sm-6">
+      <div class="col-xs-6 col-sm-3">
         <div class="well">
           <h3 class="text-primary"><span class="fa fa-facebook"></span> Facebook</h3>
           <% if (user.facebook.token) { %>
@@ -72,7 +67,9 @@
           <a href="/connect/facebook" class="btn btn-primary">Connect Facebook</a>
           <% } %>
         </div>
+      </section>
       </div>
+    </section>
     </div>
 
   </div>

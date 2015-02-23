@@ -322,6 +322,19 @@ label[for='toggle-all'] {
 	display: none;
 }
 
+.well {
+	white-space: nowrap;
+  overflow: hidden;
+	word-break: break-word;
+	text-overflow: ellipsis;
+}
+
+.page-header {
+	top: 0;
+	right: 0;
+	left: 0;
+}
+
 @media screen and (-webkit-min-device-pixel-ratio:0) {
 	#toggle-all,
 	#todo-list li .toggle {
