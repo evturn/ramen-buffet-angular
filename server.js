@@ -8,12 +8,40 @@ var methodOverride = require('method-override');
 mongoose.connect('mongodb://node:node@mongo.onmodulus.net:27017/uwO3mypu');
 
 app.use(express.static(__dirname + '/public'));
-
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({'extended':'true'}));
 app.use(bodyParser.json());
 app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 app.use(methodOverride());
+
+var Todo = mongoose.model('Todo', {
+	text: String
+});
+
+app.get('/api/todos', function(req, res) {
+	Todo.find(function(err, todos) {
+		if (err)
+			res.send(err)
+		res.json(todos);
+	});
+});
+
+app.post('/api/todos', function(req, res) {
+	Todo.create({
+  	text : req.body.text,
+  	done : false
+	}, function(err, todo) {
+    if (err)
+        res.send(err);
+  Todo.find(function(err, todos) {
+    if (err)
+        res.send(err)
+        res.json(todos);
+    });
+	});
+});
+
+
 
 app.listen(8080);
 console.log("App listening on port 8080");
